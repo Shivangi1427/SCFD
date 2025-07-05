@@ -1,10 +1,10 @@
-**Maximal Product using Dominating Set, Burning Numbers, and Absorbance Tree in Optimizing Fuzzy Networks**
+**Maximal & Co-Normal Product using Dominating Set, Burning Numbers, and Absorbance Tree in Optimizing Fuzzy Networks**
 
 ## Project Overview
 
 This project  implements and analyzes advanced methods for optimizing fuzzy networks via three key concepts:
 
-1. **Maximal Product of Fuzzy Graphs**: Computation of the maximal product of two fuzzy graphs under various connectivity constraints.
+1. **Maximal & Co-Normal Product of Fuzzy Graphs**: Computation of both maximal and co-normal products of two fuzzy graphs under various connectivity constraints
 2. **Dominating Set & Burning Numbers**: Identification of minimal dominating sets and computation of burning numbers to capture spread dynamics.
 3. **Absorbance Tree Construction**: Generation of absorbance trees to measure and enhance network containment properties.
 
@@ -12,7 +12,7 @@ By integrating these approaches, the project delivers a toolkit for researchers 
 
 ## Features
 
-* **CFDG Generation**: Create strong, weak, and unilateral connectivity fuzzy digraphs.
+* **Co-Normal Product**: Algorithms to compute co-normal (conormal) products under the co-normal operation.
 * **Maximal Product**: Algorithms to compute maximal products under $\odot$, $\otimes$, and other operations.
 * **Dominating Set**: Exact and heuristic methods to find minimal dominating sets in fuzzy digraphs.
 * **Burning Number**: Compute the burning number for a given fuzzy graph to model diffusion processes.
@@ -76,28 +76,32 @@ from src.maximal_product import maximal_product
 H = maximal_product(G, G, method="odot")
 ```
 
-### 2. Find a Dominating Set
+## 2. Compute Co-Normal Product
+from src.co_normal_product import co_normal_product
+H_conormal = co_normal_product(G, G)
+
+### 3. Find a Dominating Set
 
 ```python
 from src.dominating_set import find_min_dominating_set
 S = find_min_dominating_set(G)
 ```
 
-### 3. Calculate Burning Number
+### 4. Calculate Burning Number
 
 ```python
 from src.burning_number import compute_burning_number
 b = compute_burning_number(G)
 ```
 
-### 4. Build Absorbance Tree
+### 5. Build Absorbance Tree
 
 ```python
 from src.absorbance_tree import build_absorbance_tree
 T = build_absorbance_tree(G, root=0)
 ```
 
-### 5. Visualization
+### 6. Visualization
 
 ```python
 from src.visualize import plot_graph, plot_tree
@@ -105,12 +109,6 @@ plot_graph(G, highlighted_nodes=S)
 plot_tree(T)
 ```
 
-## Algorithms Implemented
-
-* **Maximal Product \*\*\*\*$\odot$**: Follows Definition 4.3.1, ensuring $\mu(u,v)\leq\sigma(u)\wedge\sigma(v)$.
-* **Dominating Set**: Backtracking search with pruning and greedy heuristic fallback. Complexity: NP-hard, heuristics used for large graphs.
-* **Burning Number**: Sequential layering approach to minimize spread time, based on \[Bonato & Janssen, 2015].
-* **Absorbance Tree**: Depth-first search to construct containment trees, metrics include absorbance rate and tree height.
 
 ## Contributing
 
